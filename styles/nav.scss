@@ -1,0 +1,17 @@
+nav {
+  color: #fff;
+  display: flex;
+  background-color: #425c59;
+
+  .logo {
+    color: #eac39d;
+  }
+
+};
+
+.navbar {
+  // this section should handle things like content placement, position, padding, etc
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+};
