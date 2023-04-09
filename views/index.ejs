@@ -12,13 +12,57 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/nav.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
 </head>
 
 <body>
-  <h1>Have fun! 🥔</h1>
+  <!-- OMNIPRESENT NAV BAR, POSITION FIXED -->
+  <nav class="navbar">
+    <span class="logo">
+         Smart TODO
+    </span>
+    <div class="login">
+      Hi, Andrea
+    </div>
+  </nav>
+
+  <!-- NEW TODO SUBMISSION BOX, TO BE HIDDEN FOR NON USER -->
+  <header>
+    <form method="POST" action="/todo" id="new-todo-form">
+      <p>Add whatever you want to do. We will help you to categorize it</p>
+      <textarea name="text" id="todo-item" for="todo-item" placeholder="..."></textarea>
+    </form>
+    <div class="add-button">
+      <button type="submit">ADD TODO</button>
+    </div>
+  </header>
+
+  <!-- DYNAMIC LISTS -->
+  <main>
+    <section class="to-eat">
+      <button type="button" class="collapsible">TO EAT</button>
+      <div class="todo-item">
+      </div>
+    </section>
+    <section class="to-watch">
+      <button type="button" class="collapsible">TO WATCH</button>
+      <div class="todo-item">
+      </div>
+    </section>
+    <section class="to-buy">
+      <button type="button" class="collapsible">TO BUY</button>
+      <div class="todo-item">
+      </div>
+    </section>
+    <section class="to-read">
+      <button type="button" class="collapsible">TO READ</button>
+      <div class="todo-item">
+      </div>
+    </section>
+  </main>
 </body>
 
 </html>
