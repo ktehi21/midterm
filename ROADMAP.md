@@ -1,4 +1,4 @@
-# LIGHTHOUSE LABS - Mid-term Project Kickoff
+# LIGHTHOUSE LABS - Mid-term Project
 
 ## Project Learning Outcomes
 * experience with collaboration
