@@ -1,18 +1,49 @@
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
 
   background: rgb(163, 208, 219);
-  background: linear-gradient(
-    227deg,
-    rgba(163, 208, 219, 1) 0%,
-    rgba(163, 176, 219, 1) 20%,
-    rgba(163, 173, 219, 1) 34%,
-    rgba(163, 219, 208, 1) 59%,
-    rgba(163, 208, 219, 1) 74%,
-    rgba(163, 208, 219, 1) 100%
-  );
 }
+
+//Everything below: set display to none when JS file created, to hide from non-logged in users
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #dfe4de;
+
+  .add-button {
+    margin: auto;
+    font-size: 16px;
+    padding: 10px;
+  };
+
+  button {
+    padding: 10px 20px;
+    background-color: #dfe4de;
+    color: #353a3d;
+  }
+
+  #new-todo-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+  };
+
+  #todo-item {
+    text-align: center;
+    padding-top: 20px;
+  };
+
+  textarea {
+    background-color: #eff1ee;
+    resize: none;
+    border-radius: 15px;
+    text-decoration: #353a3d
+  };
+
+};
