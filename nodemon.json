@@ -1,12 +1,7 @@
 {
   "events": {
-<<<<<<< HEAD
     "restart": "kill-port 8080",
     "crash": "kill-port 8080"
-=======
-    "restart": "kill-port 3000",
-    "crash": "kill-port 3000"
->>>>>>> feature_html
   },
   "delay": "1500"
 }
