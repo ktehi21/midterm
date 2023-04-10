@@ -56,11 +56,19 @@ main {
     padding: 10px;
   };
 
+  //Below addresses secion for right hand side elements (tally of items, etc) on collapsible button
+  // .collapsible:after {
+
+  // };
+
   .todo-list {
     color: #454444;
     background-color: #f2f4f1;
     font-size: 18px;
-    padding: 30px;
+    padding: 0 30px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
   };
 
   p {
