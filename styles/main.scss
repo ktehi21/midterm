@@ -3,7 +3,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
 
-  background: rgb(163, 208, 219);
+  background-color: F2F4F1;
 }
 
 //Everything below: set display to none when JS file created, to hide from non-logged in users
@@ -28,14 +28,14 @@ header {
     color: #353a3d;
   }
 
-  #new-todo-form {
+  #new-task-form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding-top: 60px;
   };
 
-  #todo-item {
+  #task {
     text-align: center;
     padding-top: 20px;
   };
@@ -45,6 +45,35 @@ header {
     background-color: #eff1ee;
     resize: none;
     text-decoration: #353a3d
+  };
+
+};
+
+main {
+  .collapsible {
+    background-color: #425c59;
+    color: #eff1ee;
+    padding: 10px;
+  };
+
+  //Below addresses secion for right hand side elements (tally of items, etc) on collapsible button
+  // .collapsible:after {
+
+  // };
+
+  .todo-list {
+    color: #454444;
+    background-color: #f2f4f1;
+    font-size: 18px;
+    padding: 0 30px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  };
+
+  p {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
   };
 
 };
