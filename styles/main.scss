@@ -12,6 +12,7 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 340px;
   width: 100%;
   background-color: #dfe4de;
 
@@ -31,7 +32,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 10px;
+    padding-top: 60px;
   };
 
   #todo-item {
@@ -40,9 +41,9 @@ header {
   };
 
   textarea {
+    height: 50px;
     background-color: #eff1ee;
     resize: none;
-    border-radius: 15px;
     text-decoration: #353a3d
   };
 
