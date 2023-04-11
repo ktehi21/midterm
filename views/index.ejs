@@ -15,25 +15,28 @@
   <link rel="stylesheet" href="/styles/nav.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
+  <script src="/scripts/app.js"></script>
 </head>
 
 <body>
   <!-- OMNIPRESENT NAV BAR, POSITION FIXED -->
   <nav class="navbar">
-    <span class="logo">
-      <img src="/img/logo.png" alt="SMART TODO">
-    </span>
-    <div class="login">
-      Hi, Andrea
+    <div>
+      <span class="logo">
+        <img src="/images/logo.png" alt="SMART TODO">
+      </span>
+      <div class="login">
+        Hi, Andrea
+      </div>
     </div>
   </nav>
 
   <!-- NEW TODO SUBMISSION BOX, TO BE HIDDEN FOR NON USER -->
   <header>
     <form method="POST" action="/todo" id="new-task-form">
-      <p>Add whatever you want to do. We will help you to categorize it</p>
-      <textarea name="text" id="task" for="task" placeholder="..."></textarea>
+      <p>Add whatever you want to do.<br>
+        We will help you to categorize it</p>
+      <textarea name="text" id="task" for="task" placeholder="what do you  want to remember?"></textarea>
     </form>
       <div class="add-button">
       <button type="submit">ADD TODO</button>
@@ -69,6 +72,10 @@
       </section>
     </section>
   </main>
+
+  <footer>
+    <p>THIS SITE IS CREATED BY BROOK, MONICA, and TAEHEE</p>
+  </footer>
 </body>
 
 </html>

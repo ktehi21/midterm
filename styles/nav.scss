@@ -1,21 +1,23 @@
 nav {
   color: #fff;
-  display: flex;
   background-color: #425c59;
+  padding: 15px 20px;
 
+  > div{
+    max-width: 1080px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+  }
   .logo {
     color: #eac39d;
   }
 
+  .login {
+    padding-top: 15px;
+  }
+
 };
 
-.navbar {
-  // this section should handle things like content placement, position, padding, etc
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 20px;
-};
-
-.login {
-  padding-top: 15px;
-}

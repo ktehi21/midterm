@@ -1,11 +1,21 @@
+@font-face {
+  font-family: 'Andale Mono Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Andale Mono Regular'), url('ANDALEMO.woff') format('woff');
+  }
+
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-
-  background-color: F2F4F1;
+  font-family:'Andale Mono Regular';
+  background-color: #f4f4f4;
 }
-
+p {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+};
 //Everything below: set display to none when JS file created, to hide from non-logged in users
 header {
   display: flex;
@@ -13,26 +23,20 @@ header {
   align-items: center;
   justify-content: center;
   min-height: 340px;
+  text-align: center;
   width: 100%;
   background-color: #dfe4de;
-
-  .add-button {
-    margin: auto;
-    font-size: 16px;
-    padding: 10px;
-  };
-
-  button {
-    padding: 10px 20px;
-    background-color: #dfe4de;
-    color: #353a3d;
-  }
 
   #new-task-form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-top: 60px;
+
+    p{
+      margin-top: 75px;
+      margin-bottom: 35px;
+      color: #222c24;
+    }
   };
 
   #task {
@@ -42,18 +46,65 @@ header {
 
   textarea {
     height: 50px;
+    width: 500px;
     background-color: #eff1ee;
     resize: none;
-    text-decoration: #353a3d
+    text-decoration: #353a3d;
+    margin-bottom: 25px;
+    border: none;
   };
+
+  .add-button {
+    margin: 0 auto 85px;
+    font-size: 16px;
+    padding: 10px;
+  };
+
+  button {
+    padding: 10px 20px;
+    background-color: #dfe4de;
+    color: #353a3d;
+    width: 185px;
+  }
 
 };
 
 main {
+  max-width: 1080px;
+  width: 100%;
+  min-height: 400px;
+  margin: 75px auto;
+  padding: 0 20px 130px;
+
+  section{
+    margin-bottom: 35px;
+    box-shadow: 5px 5px 6px #bcbaba;
+  }
   .collapsible {
     background-color: #425c59;
     color: #eff1ee;
-    padding: 10px;
+    height: 65px;
+    padding: 0 30px ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border: none;
+
+    div{
+      display: flex;
+      align-items: center;
+
+      p:first-child{
+        font-size: 14px;
+        text-align: right;
+      }
+      p:last-child{
+        font-size: 36px;
+        color: #fccfa5;
+        margin-left: 15px;
+      }
+    }
   };
 
   //Below addresses secion for right hand side elements (tally of items, etc) on collapsible button
@@ -64,16 +115,59 @@ main {
   .todo-list {
     color: #454444;
     background-color: #f2f4f1;
-    font-size: 18px;
+    font-size: 16px;
     padding: 0 30px;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
-  };
 
-  p {
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-  };
 
+    > div:first-child{
+      margin-top: 30px;
+    }
+    >div:last-child{
+      margin-bottom: 30px;
+    }
+
+    .lists {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #798c89;
+      margin-bottom: 10px;
+      padding: 0 15px;
+
+      div{
+        display: flex;
+        align-items: center;
+
+        input {
+          width: 26px; height: 26px;
+          border-radius: 3px;
+          border: 2px solid #798c89;
+          margin-right: 15px;
+        }
+        p{
+          display: flex;
+          flex-direction: column;
+          padding-bottom: 5px;
+          padding-left: 15px;
+          border-left: 2px solid #798c89;
+
+        }
+        span{
+          color: #989393;
+          font-size: 14px;
+        }
+      }
+    }
+  }
 };
+
+footer{
+  height: 50px;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  background-color: #798c89;
+}
