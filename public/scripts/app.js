@@ -84,6 +84,12 @@ $(document).ready(function() {
 
   const coll = $(".collapsible");
 
+
+
+  //collapsible animation for each category's list
+  const coll = document.getElementsByClassName("collapsible");
+
+
   for (i = 0; i < coll.length; i++) {
     coll[i].addEventListener("click", function() {
       this.classList.toggle("active");
