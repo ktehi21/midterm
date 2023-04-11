@@ -1,0 +1,14 @@
+// This is the .scss for initial page load when WELCOME TO SMART TODO is the only thing showing when not login.
+.initial-page-load{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #353a3d;
+  padding-bottom: 20%;
+}
+
+.wrapper {
+  display: none;
+}

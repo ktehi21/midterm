@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/nav.css" />
+  <link rel="stylesheet" href="/styles/initial-page-load.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
@@ -22,51 +23,63 @@
   <!-- OMNIPRESENT NAV BAR, POSITION FIXED -->
   <nav class="navbar">
     <span class="logo">
-      <img src="/img/logo.png" alt="SMART TODO">
+      <img src="/images/logo.png" alt="SMART TODO">
     </span>
     <div class="login">
       Hi, Andrea
     </div>
   </nav>
-
-  <!-- NEW TODO SUBMISSION BOX, TO BE HIDDEN FOR NON USER -->
-  <header>
-    <form method="POST" action="/todo" id="new-task-form">
-      <p>Add whatever you want to do. We will help you to categorize it</p>
-      <textarea name="text" id="task" for="task" placeholder="..."></textarea>
-    </form>
-    <div class="add-button">
-      <button type="submit">ADD TODO</button>
+  <!-- ON INITIAL PAGE LOAD OR VISIT, THIS FILE EXECUTES: JUST THE DIV WITH CLASS OF initial-page-load. It only uses CSS, no js, css declarations are on initial-page-load.scss. EVERYTHING BELOW THIS IS HIDDEN -->
+  <div class="initial-page-load">
+    <div class="intro"><img src="images/intro.png" alt="intro logo"></div>
+    <div class="intro-message">
+      <p>You can organize your TODO LIST</p>
+      <p>with SMART TODO's auto categorize</p>
+      <p>Using SMART TODO after login</p>
     </div>
-  </header>
+  </div>
 
-  <!-- DYNAMIC LISTS -->
-  <main>
-    <section class="to-eat">
-      <button type="button" class="collapsible"><img src="/images/eat.png" alt="TO EAT"></button>
-      <div class="todo-list">
-        <p> Hi There!</p>
+  <div class="wrapper"><!-- WRAPPER DIV HIDES CONTENTS ON WHEN NOT LOGIN  -->
+    <!-- NEW TODO SUBMISSION BOX, TO BE HIDDEN FOR NON USER -->
+    <header>
+      <form method="POST" action="/todo" id="new-task-form">
+        <p>Add whatever you want to do. We will help you to categorize it</p>
+        <textarea name="text" id="task" for="task" placeholder="..."></textarea>
+      </form>
+      <div class="add-button">
+        <button type="submit">ADD TODO</button>
       </div>
-    </section>
-    <section class="to-watch">
-      <button type="button" class="collapsible"><img src="/images/watch.png" alt="TO WATCH"></button>
-      <div class="todo-list">
-        <p> Hi There!</p>
-      </div>
-    </section>
-    <section class="to-buy">
-      <button type="button" class="collapsible"><img src="/images/buy.png" alt="TO BUY"></button>
-      <div class="todo-list">
-        <p> Hi There!</p>
-      </div>
-    </section>
-    <section class="to-read">
-      <button type="button" class="collapsible"><img src="/images/read.png" alt="TO READ "></button>
-      <div class="todo-list">
-        <p> Hi There!</p>
-      </div>
-    </section>
-  </main>
+    </header>
+
+    <!-- DYNAMIC LISTS -->
+    <main>
+      <section class="to-eat">
+        <button type="button" class="collapsible"><img src="/images/eat.png" alt="TO EAT"></button>
+        <div class="todo-list">
+          <p> Hi There!</p>
+        </div>
+      </section>
+      <section class="to-watch">
+        <button type="button" class="collapsible"><img src="/images/watch.png" alt="TO WATCH"></button>
+        <div class="todo-list">
+          <p> Hi There!</p>
+        </div>
+      </section>
+      <section class="to-buy">
+        <button type="button" class="collapsible"><img src="/images/buy.png" alt="TO BUY"></button>
+        <div class="todo-list">
+          <p> Hi There!</p>
+        </div>
+      </section>
+      <section class="to-read">
+        <button type="button" class="collapsible"><img src="/images/read.png" alt="TO READ "></button>
+        <div class="todo-list">
+          <p> Hi There!</p>
+        </div>
+      </section>
+    </main>
+
+  </div> <!-- END OF WRAPPER DIV -->
 </body>
 
 </html>
