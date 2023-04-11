@@ -1,5 +1,14 @@
+
 // Client facing scripts here
 $(document).ready(function() {
+
+  $.ajax({
+    method: 'GET',
+    url: '/todo'
+  })
+  .done((response) => {
+    console.log("response", response);
+  });
 
   const coll = document.getElementsByClassName("collapsible");
 
