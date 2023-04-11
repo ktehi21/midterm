@@ -26,16 +26,20 @@ $(document).ready(function () {
 
   const sendToList = function(task) {
     if (task.category === 'eat') {
-      $(".eat.todo-list")
+      $(".eat.todo-list").append(task);
+      return;
     }
     if (task.category === 'watch') {
       $(".watch.todo-list").append(task);
+      return;
     }
     if (task.category === 'buy') {
       $(".buy.todo-list").append(task);
+      return;
     }
     if (task.category === 'read') {
       $(".read.todo-list").append(task);
+      return;
     }
   };
 
