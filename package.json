@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "kill-port": "^2.0.1",
+    "node-sass": "^8.0.0",
     "nodemon": "^2.0.10"
   }
 }
