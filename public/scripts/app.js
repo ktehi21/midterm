@@ -1,6 +1,7 @@
 // Client facing scripts here
 $(document).ready(function() {
 
+  //collapsible animation for each category's list
   const coll = document.getElementsByClassName("collapsible");
 
   for (i = 0; i < coll.length; i++) {
