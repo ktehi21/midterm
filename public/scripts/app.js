@@ -80,11 +80,7 @@ $(document).ready(function() {
     }
   });
 
-
-
-  const coll = $(".collapsible");
-
-
+  // const coll = $(".collapsible");
 
   //collapsible animation for each category's list
   const coll = document.getElementsByClassName("collapsible");
