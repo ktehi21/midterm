@@ -9,6 +9,30 @@
   padding-bottom: 20%;
 }
 
+
+@media only screen and (max-width: 600px) {
+
+  .initial-page-load {
+    padding-bottom: 40%;
+  }
+
+  .intro-image {
+    display: flex;
+    justify-content: center;
+
+  }
+
+  img {
+    width: 80%;
+  }
+
+  .intro-message p {
+    font-size: 14px;
+  }
+}
+
+
+
 .wrapper {
   display: none;
 }

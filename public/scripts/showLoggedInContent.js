@@ -1,6 +1,6 @@
 function showLoggedInContent() {
-  // Check if user is logged in (replace with your own login check)
-  const isLoggedIn = true;
+  // Check if session cookie is present (replace 'sessionId' with your session cookie name)
+  const isLoggedIn = document.cookie.includes('sessionId');
 
   if (isLoggedIn) {
     // Show elements with class .wrapper
