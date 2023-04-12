@@ -1,6 +1,7 @@
 LHL Node Skeleton
 =========
-
+Monica did something here!
+ 
 ## Project Setup
 
 The following steps are only for _one_ of the group members to perform.
