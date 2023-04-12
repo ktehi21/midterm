@@ -72,7 +72,6 @@ const categoryDecision = (taskString) => {
   .then(data => {
     console.log(data);
   })
-
 };
 
 module.exports = { categoryDecision };
