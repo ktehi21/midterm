@@ -16,6 +16,5 @@ router.get('/:word', (req, res) => {
 });
 
 
-
 module.exports = router;
 
