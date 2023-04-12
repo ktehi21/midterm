@@ -39,7 +39,7 @@ const todoRoutes = require('./routes/get_todo');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
-app.use('/get_todo', todoRoutes);
+app.use('/todo', todoRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
