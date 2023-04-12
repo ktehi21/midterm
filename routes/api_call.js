@@ -85,7 +85,7 @@ async function classifyWord(word) {
   return null;
 }
 console.time('classifyWord');
-classifyWord('chicko chicken')
+classifyWord('Nene Chicken')
 .then(category => {
   console.log(category);
   console.timeEnd('classifyWord')});
