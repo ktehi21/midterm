@@ -11,7 +11,7 @@ $(() => {
 
 
       for(const user of response.users) {
-        $(`<li class="user">`).text(user.email).appendTo($usersList);
+        $(`<li class="user">`).text(user.name).appendTo($usersList);
       }
     });
   });
