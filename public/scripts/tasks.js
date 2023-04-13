@@ -13,10 +13,10 @@ $(document).ready(function () {
   //form to create a new task item
   const createTaskElement = function(task) {
     const $task = $(`
-      <article class="task ${task.category}" id="${task.id}>
+      <article class="task ${task.category}" id="${task.title}>
         <p><label>
             <input type="checkbox">
-            <span class="checkable"> ${escape(task.content.text)}
+            <span class="checkable"> ${escape(task.title)}
           </label>
         </p>
         </article>
@@ -24,45 +24,51 @@ $(document).ready(function () {
     return $task;
   };
 
-  const sendToList = function(task) {
-    if (task.category === 'eat') {
-      $(".eat.todo-list").append(task);
+  const sendToList = function(task, taskObj) {
+    console.log("taskObj", taskObj);
+    console.log("task", task);
+    if (taskObj.category === 'eat') {
+      $(".eat .todo-list").append(task);
       return;
     }
-    if (task.category === 'watch') {
-      $(".watch.todo-list").append(task);
+    if (taskObj.category === 'watch') {
+      $(".watch .todo-list").append(task);
       return;
     }
-    if (task.category === 'buy') {
-      $(".buy.todo-list").append(task);
+    if (taskObj.category === 'buy') {
+      $(".buy .todo-list").append(task);
       return;
     }
-    if (task.category === 'read') {
-      $(".read.todo-list").append(task);
+    if (taskObj.category === 'read') {
+      $(".read .todo-list").append(task);
       return;
     }
   };
 
   const renderToDo = function(tasks) {
-    const $container = $("#lists");
+    const $container = $(".todo-list");
     $container.empty();
     tasks.forEach(task => {
       const newTask = createTaskElement(task);
-      sendToList(newTask);
+      sendToList(newTask, task);
     });
   };
 
   //Submit a new task to list from submit form!
-  $("#new-task-form").submit(function(event) {
+  $("#submit").on("click", function(event) {
     event.preventDefault();
     const newTask = $(this).serialize();
-    const input = $("#text").val();
+    const input = $("#task").val();
 
     $.post({
       method: 'POST',
-      url: '/tasks',
-      data: newTask
-    }).then(loadToDo);
+      url: '/todo',
+      data: {task:input}
+    }).then((val)=>{
+      console.log(val); // this is the object response from category decision
+      // loadToDo();
+      renderToDo(val.data);
+    });
 
   });
 
