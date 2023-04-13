@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS todo_items CASCADE;
+CREATE TABLE todo_items (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) NOT NULL,
+  category_id INTEGER REFERENCES categories(id) NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  post_date TIMESTAMP NOT NULL,
+  complete BOOLEAN DEFAULT FALSE
+);
