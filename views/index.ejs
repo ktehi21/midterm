@@ -27,7 +27,8 @@
       <img src="/images/logo.png" alt="SMART TODO">
     </span>
     <div class="login">
-      Hi, Andrea
+      <button onclick="showElement()">Please Login</button>
+      <!-- <span class="wrapper">Hi, Andrea!</span> -->
     </div>
   </nav>
 
@@ -46,7 +47,7 @@
     <header>
       <form method="POST" action="/todo" id="new-task-form">
         <p>Add whatever you want to do. We will help you to categorize it</p>
-        <textarea name="text" id="task" for="task" placeholder="..."></textarea>
+        <textarea row="1" name="text" id="task" for="task" placeholder="..."></textarea>
       </form>
       <div class="add-button">
         <button type="submit">ADD TODO</button>
@@ -80,8 +81,10 @@
         </div>
       </section>
     </main>
-
   </div> <!-- END OF WRAPPER DIV -->
+  <footer>
+    <p>THIS SITE IS CREATED BY BROOKE, MONICA, and TAEHEE</p>
+  </footer>
 </body>
 
 </html>

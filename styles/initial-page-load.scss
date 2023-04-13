@@ -1,4 +1,4 @@
-// This is the .scss for initial page load when WELCOME TO SMART TODO is the only thing showing when not login.
+// This is the .scss for initial page load when WELCOME TO SMART TODO is the only thing showing on initial visit to the page
 .initial-page-load{
   height: 100vh;
   display: flex;
@@ -33,7 +33,6 @@
 }
 
 
-
-// .wrapper {
-//   display: none;
-// }
+.wrapper {
+  display: none;
+}
