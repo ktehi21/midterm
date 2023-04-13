@@ -70,7 +70,7 @@ const categoryDecision = (taskString) => {
 
   return classifyWord(taskString)
   .then(data => {
-    console.log(data);
+    return [{title: taskString, category: data, post_date: new Date()}]
   })
 
 };
