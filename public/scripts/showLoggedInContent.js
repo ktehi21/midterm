@@ -6,13 +6,13 @@ function showLoggedInContent() {
     // Show elements with class .wrapper
     const wrapperElements = document.querySelectorAll('.wrapper');
     wrapperElements.forEach(element => {
-      element.style.display = 'block';
+      element.style.display = 'none';
     });
 
     // Hide elements with class .initial-page-load
     const initialLoadElements = document.querySelectorAll('.initial-page-load');
     initialLoadElements.forEach(element => {
-      element.style.display = 'none';
+      element.style.display = 'block';
     });
   }
 }
