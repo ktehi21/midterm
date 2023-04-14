@@ -1,5 +1,6 @@
 // This will be replaced by each API we are actually going to use:
 const {classifyWord} = require('./api_call');
+const { getTodo, saveTodoList } = require('../db/queries/todo_data');
 
 
 //Functions that will look for key words in a query to categorize a task:
@@ -70,8 +71,14 @@ const categoryDecision = (taskString) => {
 
   return classifyWord(taskString)
   .then(data => {
-    console.log(data);
+    saveTodoList({user_id: 1, category: data, title: taskString,  post_date: new Date(), complete: false})
+    .then(data => {
+      console.log("category-de:", data);
+      return data
+    })
+
   })
 };
+
 
 module.exports = { categoryDecision };

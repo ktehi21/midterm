@@ -4,9 +4,9 @@
 <head>
   <title>Home Page</title>
 
-  <meta charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
@@ -17,6 +17,7 @@
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/index.js"></script>
   <script src="/scripts/showLoggedInContent.js"></script>
 </head>
 
@@ -44,43 +45,44 @@
   <div class="wrapper"><!-- WRAPPER DIV HIDES CONTENTS ON WHEN NOT LOGIN  -->
     <!-- NEW TODO SUBMISSION BOX, TO BE HIDDEN FOR NON USER -->
     <header>
-      <form method="POST" action="/todo" id="new-task-form">
+      <form id="new-task-form">
         <p>Add whatever you want to do. We will help you to categorize it</p>
         <textarea name="text" id="task" for="task" placeholder="..."></textarea>
+        <div class="add-button">
+          <button id="add-todo" type="submit">ADD TODO</button>
+        </div>
       </form>
-      <div class="add-button">
-        <button type="submit">ADD TODO</button>
-      </div>
     </header>
 
     <!-- DYNAMIC LISTS -->
     <main>
-      <section class="eat">
-        <button type="button" class="collapsible"><img src="/images/eat.png" alt="TO EAT"></button>
-        <div class="todo-list">
-          <p> Hi There!</p>
-        </div>
+      <section id="lists">
+        <section class="eat">
+          <button type="button" class="collapsible"><img src="/images/eat.png" alt="TO EAT"></button>
+          <div class="todo-list">
+            <p> Hi There!</p>
+          </div>
+        </section>
+        <section class="watch">
+          <button type="button" class="collapsible"><img src="/images/watch.png" alt="TO WATCH"></button>
+          <div class="todo-list">
+            <p> Hi There!</p>
+          </div>
+        </section>
+        <section class="buy">
+          <button type="button" class="collapsible"><img src="/images/buy.png" alt="TO BUY"></button>
+          <div class="todo-list">
+            <p> Hi There!</p>
+          </div>
+        </section>
+        <section class="read">
+          <button type="button" class="collapsible"><img src="/images/read.png" alt="TO READ "></button>
+          <div class="todo-list">
+            <p> Hi There!</p>
+          </div>
+        </section>
       </section>
-      <section class="watch">
-        <button type="button" class="collapsible"><img src="/images/watch.png" alt="TO WATCH"></button>
-        <div class="todo-list">
-          <p> Hi There!</p>
-        </div>
-      </section>
-      <section class="buy">
-        <button type="button" class="collapsible"><img src="/images/buy.png" alt="TO BUY"></button>
-        <div class="todo-list">
-          <p> Hi There!</p>
-        </div>
-      </section>
-      <section class="read">
-        <button type="button" class="collapsible"><img src="/images/read.png" alt="TO READ "></button>
-        <div class="todo-list">
-          <p> Hi There!</p>
-        </div>
-      </section>
-    </section>
-  </main>
+    </main>
   </div> <!-- END OF WRAPPER DIV -->
   <footer>
     <p>THIS SITE IS CREATED BY BROOKE, MONICA, and TAEHEE</p>
