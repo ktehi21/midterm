@@ -20,16 +20,12 @@ const aws = require('aws-lib');
 
 
 // API KEYs
-const YELP_API_KEY = 'Hxk7-QeEfr9MHXjXgbCGBoaM6QK5-iUmIv9zRkoJ8OzAkNZWr-Vh4_WnXToqxZ_daB13EGRmF0dcHmOM0_nOJAS1vGQo1LWk3RdbEIk3GVtMwr-u0R-xDBff5P41ZHYx';
-const prodAdv = aws.createProdAdvClient(
-  'pt8NKSaKf81QT1MuinYJXaYVYfefc5Ec6K29i2s0',
-  'YtnqCajegNPoqn+ZYdm9lVfcPw3WFlHNuUlxjvV5'
-);
-const GOOGLE_BOOKS_API_KEY = 'AIzaSyDWY0aEPcjQwIsE4G3eR0-Qvar09I4UaGc';
+
+
 const books = google.books('v1');
 
 // Amazon API
-const fetchAmazon = function (word) {
+const fetchAmazon = function(word) {
   const amazonPromise = new Promise((resolve, reject) => {
     prodAdv.call('ItemSearch', {
       SearchIndex: 'All',
@@ -38,22 +34,21 @@ const fetchAmazon = function (word) {
     }, (err, result) => {
       if (err) {
         reject(err);
-        return
+        return;
       }
-      console.log(result); // log the result to the console
       if (result.Items && result.Items.Item && result.Items.Item.length > 0) {
         resolve('BUY');
-        return
+        return;
       }
       resolve();
     });
   });
 
-  return amazonPromise
+  return amazonPromise;
 }
 
 // Yelp API
-const fetchYelp = function (word) {
+const fetchYelp = function(word) {
   const yelpPromise = fetch(`https://api.yelp.com/v3/businesses/search?term=${word}&location=Vancouver&categories=restaurants`, { headers: { Authorization: `Bearer ${YELP_API_KEY}` } })
     .then(res => res.json())
     .then(json => {
@@ -64,11 +59,11 @@ const fetchYelp = function (word) {
       return null;
     });
 
-  return yelpPromise
-}
+  return yelpPromise;
+};
 
 // Google Books API
-const fetchBooks = function (word) {
+const fetchBooks = function(word) {
   const booksPromise = books.volumes.list({
     q: `intitle:${word}`,
     key: GOOGLE_BOOKS_API_KEY
@@ -81,8 +76,8 @@ const fetchBooks = function (word) {
       return null;
     });
 
-  return booksPromise
-}
+  return booksPromise;
+};
 
 
 // code start
@@ -110,7 +105,7 @@ async function classifyWord(word) {
     })
     .catch(err => {
       console.log(err.messege);
-    })
+    });
 
   return null;
 }
