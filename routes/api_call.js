@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+const axios = require('axios');
 const { google } = require('googleapis');
 const aws = require('aws-lib');
 
@@ -32,7 +32,10 @@ const fetchAmazon = function(word) {
 
 // Yelp API
 const fetchYelp = function(word) {
-  const yelpPromise = fetch(`https://api.yelp.com/v3/businesses/search?term=${word}&location=Vancouver&categories=restaurants`, { headers: { Authorization: `Bearer ${YELP_API_KEY}` } })
+  const yelpPromise = axios({
+    method: 'get',
+    url: `https://api.yelp.com/v3/businesses/search?term=${word}&location=Vancouver&categories=restaurants`,
+    headers: { Authorization: `Bearer ${YELP_API_KEY}` } })
     .then(res => res.json())
     .then(json => {
       if (json.businesses.length > 0) {
