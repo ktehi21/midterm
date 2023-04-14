@@ -1,23 +1,6 @@
 const fetch = require('node-fetch');
 const { google } = require('googleapis');
 const aws = require('aws-lib');
-// need to install
-// npm install google-auth-library googleapis
-// npm install aws-lib
-
-/*
-  break 3 differents function
-  do not use async!!
-  use promise.then
-
-  After break down 3 different function
-  this export to category-decision.js
-  in category-decision we can make sure the category then export the categoryDecision to get_todo.js
-  in get_todo.js GET the word, user typed.
-  then call categoryDecision
-
-*/
-
 
 // API KEYs
 
@@ -112,9 +95,3 @@ async function classifyWord(word) {
 
 
 module.exports = { classifyWord };
-
-
-/*
-    index.html(or index.ejs) - index.js : should be use same name
-  api_call_save.js
-*/

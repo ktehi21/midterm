@@ -2,7 +2,7 @@
 const express = require('express');
 const router  = express.Router();
 const { getTodo } = require('../db/queries/todo_data');
-const {categoryDecision} = require('./category-decision');
+const {categoryDecision} = require('../public/scripts/helper/category-decision');
 
 router.post('/', (req, res) => {
   const word = req.body.task;
