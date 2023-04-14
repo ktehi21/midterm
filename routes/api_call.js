@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+const axios = require('axios');
 const { google } = require('googleapis');
 const aws = require('aws-lib');
 // need to install
@@ -20,9 +20,15 @@ const aws = require('aws-lib');
 
 
 // API KEYs
-
-
+const YELP_API_KEY = 'Hxk7-QeEfr9MHXjXgbCGBoaM6QK5-iUmIv9zRkoJ8OzAkNZWr-Vh4_WnXToqxZ_daB13EGRmF0dcHmOM0_nOJAS1vGQo1LWk3RdbEIk3GVtMwr-u0R-xDBff5P41ZHYx';
+const prodAdv = aws.createProdAdvClient(
+  'pt8NKSaKf81QT1MuinYJXaYVYfefc5Ec6K29i2s0',
+  'YtnqCajegNPoqn+ZYdm9lVfcPw3WFlHNuUlxjvV5'
+);
+const GOOGLE_BOOKS_API_KEY = 'AIzaSyDWY0aEPcjQwIsE4G3eR0-Qvar09I4UaGc';
 const books = google.books('v1');
+
+
 
 // Amazon API
 const fetchAmazon = function(word) {
@@ -45,11 +51,26 @@ const fetchAmazon = function(word) {
   });
 
   return amazonPromise;
-}
+};
 
 // Yelp API
 const fetchYelp = function(word) {
-  const yelpPromise = fetch(`https://api.yelp.com/v3/businesses/search?term=${word}&location=Vancouver&categories=restaurants`, { headers: { Authorization: `Bearer ${YELP_API_KEY}` } })
+  // const yelpPromise = fetch(`https://api.yelp.com/v3/businesses/search?term=${word}&location=Vancouver&categories=restaurants`, { headers: { Authorization: `Bearer ${YELP_API_KEY}` } })
+  //   .then(res => res.json())
+  //   .then(json => {
+  //     if (json.businesses.length > 0) {
+  //       return 'EAT';
+  //     }
+  //     // Return a resolved promise with null if no businesses are found
+  //     return null;
+  //   });
+
+  const yelpPromise = axios({
+    method: 'get',
+    url: `https://api.yelp.com/v3/businesses/search?term=${word}&location=Vancouver&categories=restaurants`,
+    headers: { Authorization: `Bearer ${YELP_API_KEY}` }
+
+  })
     .then(res => res.json())
     .then(json => {
       if (json.businesses.length > 0) {
