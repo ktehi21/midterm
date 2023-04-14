@@ -4,7 +4,8 @@ An auto-categorized task app that remembers, so you don't have to.
 Submit your "to-do" and watch your task automatically sort to the appropriate list based on keywords & the assistance of external API services.
 Midterm project created for Lighthouse Labs March 2023 Cohort by Taehee Kim, Monica Wolfe, & Brooke Waterman.
 
-### See our ![Link to ROADMAP.md](https://github.com/ktehi21/midterm/blob/master/ROADMAP.md "ROADMAP.md") for current functionality & future developments!
+### See our ![ROADMAP.md](https://github.com/ktehi21/midterm/blob/master/ROADMAP.md) for current functionality & future developments!
+___
 
 ## Getting Started
 
