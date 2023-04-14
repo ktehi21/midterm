@@ -1,5 +1,5 @@
 // This will be replaced by each API we are actually going to use:
-const {classifyWord} = require('./api_call');
+const { classifyWord } = require('./api_call');
 const { getTodo, saveTodoList } = require('../db/queries/todo_data');
 
 
@@ -64,21 +64,15 @@ const categoryDecision = (taskString) => {
   category = simpleTaskCheck(taskString);
 
   if (category) {
-    console.log("What category", category);
-    return saveTodoList({user_id: 1, category: category, title: taskString,  post_date: new Date(), complete: false});
+    return saveTodoList({ user_id: 1, category: category, title: taskString, post_date: new Date(), complete: false });
   }
 
   //Time to start querying the API's
 
   return classifyWord(taskString)
-  .then(data => {
-    return saveTodoList({user_id: 1, category: data, title: taskString,  post_date: new Date(), complete: false});
-    // .then(data => {
-    //   console.log("category-de:", data);
-    //   return data
-    // })
-
-  })
+    .then(data => {
+      return saveTodoList({ user_id: 1, category: data, title: taskString, post_date: new Date(), complete: false });
+    })
 };
 
 
