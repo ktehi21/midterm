@@ -1,13 +1,13 @@
 {
   "yelp": {
-    "apiKey": "Hxk7-QeEfr9MHXjXgbCGBoaM6QK5-iUmIv9zRkoJ8OzAkNZWr-Vh4_WnXToqxZ_daB13EGRmF0dcHmOM0_nOJAS1vGQo1LWk3RdbEIk3GVtMwr-u0R-xDBff5P41ZHYx"
+    "apiKey": ""
   },
   "aws": {
-    "accessKeyId": "AKIA2WHGS2QYRIYNNEA3",
-    "secretAccessKey": "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",
-    "associateTag": "lhlmidterm-20"
+    "accessKeyId": "",
+    "secretAccessKey": "",
+    "associateTag": ""
   },
   "googleBooks": {
-    "apiKey": "AIzaSyB6lIxhXjytgBOQUJ7yM-6Zg9ZX1aW5dsU"
+    "apiKey": ""
   }
 }

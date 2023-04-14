@@ -23,14 +23,15 @@ const config = require('./config.json');
 
 
 // API KEYs
-const YELP_API_KEY = "kRn5kpS7aUV-q3h-vjMBHRtQaw4Jx5b6g2l8xKTXwHs7uszFl9TjjSgFeuY7PLB5d2z4sS4lAF0qRRBqcwvV_e91W01j94-fPGsOu4dw1R7aKntAiU_2mRX6wcs4ZHYx";
+const YELP_API_KEY = yelp_api_key;
 const prodAdv = amazon.createClient({
   awsId: config.aws.accessKeyId,
   awsSecret: config.aws.secretAccessKey,
   awsTag: config.aws.associateTag
 });
-const GOOGLE_BOOKS_API_KEY = "AIzaSyB6lIxhXjytgBOQUJ7yM-6Zg9ZX1aW5dsU";
+const GOOGLE_BOOKS_API_KEY = google_books_api_key;
 const books = google.books('v1');
+
 
 // Amazon API
 // const fetchAmazon = function (word) {
