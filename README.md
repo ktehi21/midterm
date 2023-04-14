@@ -1,18 +1,10 @@
-LHL Node Skeleton
+Smart ToDo List - Midterm
 =========
- uh oh
+An auto-categorized task app that remembers, so you don't have to.
+Submit your "to-do" and watch your task automatically sort to the appropriate list based on keywords & the assistance of external API services.
+Midterm project created for Lighthouse Labs March 2023 Cohort by Taehee Kim, Monica Wolfe, & Brooke Waterman.
 
-
-## Project Setup
-
-The following steps are only for _one_ of the group members to perform.
-
-1. Create your own copy of this repo using the `Use This Template` button, ideally using the name of your project. The repo should be marked Public
-2. Verify that the skeleton code now shows up in your repo on GitHub, you should be automatically redirected
-3. Clone your copy of the repo to your dev machine
-4. Add your team members as collaborators to the project so that they can push to this repo
-5. Let your team members know the repo URL so that they use the same repo (they should _not_ create a copy/fork of this repo since that will add additional workflow complexity to the project)
-
+### See our ![Link to ROADMAP.md](https://github.com/ktehi21/midterm/blob/master/ROADMAP.md "ROADMAP.md") for current functionality & future developments!
 
 ## Getting Started
 
@@ -44,3 +36,15 @@ The following steps are only for _one_ of the group members to perform.
 - Node 10.x or above
 - NPM 5.x or above
 - PG 6.x
+- aws-lib 0.3.0
+- axios 1.3.5
+- chalk 2.4.2
+- cheerio 1.0.0-rc.12
+- dotenv 2.0.0
+- ejs 3.1.9
+- express 4.18.2
+- google-auth-library 8.7.0
+- googleapis 116.0.0
+- morgan 1.9.1
+- pg 8.5.0
+- sass 1.35.
