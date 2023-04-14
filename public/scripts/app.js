@@ -1,4 +1,8 @@
-// Client facing scripts:
+// Client facing scripts involving main page functionality:
+
+$(document).on("click", ".complete", function() {
+
+});
 
 $(document).ready(function () {
 
