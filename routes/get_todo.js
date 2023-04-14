@@ -21,5 +21,22 @@ router.get('/', (req, res) => {
   .catch(err => console.log("error 2", err.message));
 });
 
+const removeTask = function(taskLocation, db) {
+  const queryCommand = `DELETE FROM todo-items WHERE id = $1`;
+  return db.query(queryCommand, taskLocation)
+    .then(res => res.rows[0])
+    .catch(err.message);
+};
+
+//delete route for task/todo-items
+router.delete("/:taskLocation", (req, res) => {
+  const taskLocation = req.params.taskLocation;
+  removeTask(taskLocation, db)
+    .then(task => {
+      res.send(task);
+    })
+    .catch(err.message);
+});
+
 module.exports = router;
 

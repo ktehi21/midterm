@@ -20,7 +20,7 @@ const simpleTaskCheck = (taskString) => {
     lowerCaseTask.includes("restaurant") ||
     lowerCaseTask.includes("cafe")
   ) {
-    category = "EAT"
+    category = "EAT";
   }
 
   if (
@@ -52,7 +52,7 @@ const simpleTaskCheck = (taskString) => {
     category = "BUY";
   }
   return category;
-}
+};
 
 
 //Function which is the decision engine for the category of the query. It initially looks through *whatever API we got:
@@ -72,7 +72,7 @@ const categoryDecision = (taskString) => {
   return classifyWord(taskString)
     .then(data => {
       return saveTodoList({ user_id: 1, category: data, title: taskString, post_date: new Date(), complete: false });
-    })
+    });
 };
 
 

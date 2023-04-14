@@ -48,7 +48,6 @@ app.use('/todo', todoRoutes);
 
 app.get('/', (req, res) => {
   res.render('index');
-  app.use('/', widgetApiRoutes);
 });
 
 app.listen(PORT, () => {

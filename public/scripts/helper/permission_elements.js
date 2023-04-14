@@ -10,4 +10,4 @@ function showElement() {
   // Update the button text
   const button = $('.login');
   button.html('Hello, Andrea!');
-};
+}
