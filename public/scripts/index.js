@@ -1,15 +1,16 @@
 //sets up functions devoted to task creation and task assignment functionality
+$(document).ready(function() {
 
-//escape func: unsafe tweets/entries containing malicious text are converted to safe text
-const escape = (str) => {
-  let div = document.createElement("div");
-  div.appendChild(document.createTextNode(str));
-  return div.innerHTML;
-};
+  //escape func: unsafe tweets/entries containing malicious text are converted to safe text
+  const escape = (str) => {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
 
-//form to create a new task item
-const createTaskElement = function (task) {
-  const $task = $(`
+  //form to create a new task item
+  const createTaskElement = function(task) {
+    const $task = $(`
     <article class="task ${task.category_id}" id="${task.id}>
       <p><label>
           <input type="checkbox">
@@ -18,54 +19,47 @@ const createTaskElement = function (task) {
       </p>
       </article>
   `);
-  return $task;
-};
+    return $task;
+  };
 
-const sendToList = function (task, taskData) {
-  if (taskData.category_id === 1) {
-    $(".eat .todo-list").append(task);
-    return;
-  }
-  if (taskData.category_id === 2) {
-    $(".watch .todo-list").append(task);
-    return;
-  }
-  if (taskData.category_id === 3) {
-    $(".buy .todo-list").append(task);
-    return;
-  }
-  if (taskData.category_id === 4) {
-    $(".read .todo-list").append(task);
-    return;
-  }
-};
+  const sendToList = function(task, taskData) {
+    if (taskData.category_id === 1) {
+      $(".eat .todo-list").append(task);
+      return;
+    }
+    if (taskData.category_id === 2) {
+      $(".watch .todo-list").append(task);
+      return;
+    }
+    if (taskData.category_id === 3) {
+      $(".buy .todo-list").append(task);
+      return;
+    }
+    if (taskData.category_id === 4) {
+      $(".read .todo-list").append(task);
+      return;
+    }
+  };
 
-const renderToDo = function (tasks) {
-  // const $container = $("#lists");
-  $(".todo-list").empty();
-  // $(".watch .todo-list").remove();
-  // $(".buy .todo-list").remove();
-  // $(".read .todo-list").remove();
+  const renderToDo = function(tasks) {
+    const $container = $("#todo-list");
+    $container.empty();
 
-  // $container.empty();
-  tasks.forEach(task => {
-    const newTask = createTaskElement(task);
-    sendToList(newTask, task);
-  });
-};
+    tasks.forEach(task => {
+      const newTask = createTaskElement(task);
+      sendToList(newTask, task);
+    });
+  };
 
-const loadToDo = function () {
-  $.ajax({
-    url: '/todo',
-    method: 'GET'
-  }).then((response) => {
-    console.log("response data, index file", response);
-    renderToDo(response || []);
-  });
-};
-
-
-$(document).ready(function () {
+  const loadToDo = function() {
+    $.ajax({
+      url: '/todo',
+      method: 'GET'
+    }).then((response) => {
+      console.log("response data, index file", response);
+      renderToDo(response || []);
+    });
+  };
 
   //Submit a new task to list from submit form!
   $("#add-todo").on("click", function(event) {
@@ -77,8 +71,8 @@ $(document).ready(function () {
     $.post({
       method: 'POST',
       url: '/todo',
-      data: {task:input}
-    }).then((val)=>{
+      data: { task: input }
+    }).then((val) => {
       console.log("Random val success", val); // this is the object response from category decision
       loadToDo();
     });
