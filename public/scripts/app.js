@@ -16,23 +16,20 @@ $(document).ready(function () {
     });
   }
 
+  function showElement() {
+    // Get references to the elements with the given class names
+    const wrapper = document.querySelector('.wrapper');
+    const initialPageLoad = document.querySelector('.initial-page-load');
+
+    // Show the wrapper element and hide the initial-page-load element
+    wrapper.style.display = 'block';
+    initialPageLoad.style.display = 'none';
+
+    // Update the button text
+    const button = document.querySelector('button');
+    button.innerHTML = 'Hello, Andrea!';
+  }
+
+  showElement();
 });
 
-function showLoggedInContent() {
-  // Check if session cookie is present (replace 'sessionId' with your session cookie name)
-  const isLoggedIn = document.cookie.includes('sessionId');
-
-  if (isLoggedIn) {
-    // Show elements with class .wrapper
-    const wrapperElements = document.querySelectorAll('.wrapper');
-    wrapperElements.forEach(element => {
-      element.style.display = 'none';
-    });
-
-    // Hide elements with class .initial-page-load
-    const initialLoadElements = document.querySelectorAll('.initial-page-load');
-    initialLoadElements.forEach(element => {
-      element.style.display = 'block';
-    });
-  }
-}
