@@ -20,7 +20,7 @@ const simpleTaskCheck = (taskString) => {
     lowerCaseTask.includes("restaurant") ||
     lowerCaseTask.includes("cafe")
   ) {
-    category = "eat"
+    category = "EAT"
   }
 
   if (
@@ -29,7 +29,7 @@ const simpleTaskCheck = (taskString) => {
     lowerCaseTask.includes("film") ||
     lowerCaseTask.includes("tv")
   ) {
-    category = "watch";
+    category = "WATCH";
   }
 
   if (
@@ -39,7 +39,7 @@ const simpleTaskCheck = (taskString) => {
     lowerCaseTask.includes("novel") ||
     lowerCaseTask.includes("textbook")
   ) {
-    category = "read";
+    category = "READ";
   }
 
   if (
@@ -49,7 +49,7 @@ const simpleTaskCheck = (taskString) => {
     lowerCaseTask.includes("grocer") ||
     lowerCaseTask.includes("purchase")
   ) {
-    category = "buy";
+    category = "BUY";
   }
   return category;
 }
@@ -64,18 +64,19 @@ const categoryDecision = (taskString) => {
   category = simpleTaskCheck(taskString);
 
   if (category) {
-    return category;
+    console.log("What category", category);
+    return saveTodoList({user_id: 1, category: category, title: taskString,  post_date: new Date(), complete: false});
   }
 
   //Time to start querying the API's
 
   return classifyWord(taskString)
   .then(data => {
-    saveTodoList({user_id: 1, category: data, title: taskString,  post_date: new Date(), complete: false})
-    .then(data => {
-      console.log("category-de:", data);
-      return data
-    })
+    return saveTodoList({user_id: 1, category: data, title: taskString,  post_date: new Date(), complete: false});
+    // .then(data => {
+    //   console.log("category-de:", data);
+    //   return data
+    // })
 
   })
 };

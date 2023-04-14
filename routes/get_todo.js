@@ -12,7 +12,7 @@ router.post('/', (req, res) => {
     console.log("Success", data);
     res.json({response: "successfully inserted"})
   })
-  .catch(err => console.log("getTodo, error", err.message));
+  .catch(err => console.log("getTodo1, error", err.message));
 });
 
 router.get('/', (req, res) => {
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
     console.log(data);
     res.json(data)
   })
-  .catch(err => console.log("getTodo, error", err.message));
+  .catch(err => console.log("getTodo2, error", err.message));
 });
 
 module.exports = router;
