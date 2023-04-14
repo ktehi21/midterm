@@ -1,16 +1,17 @@
 # LIGHTHOUSE LABS - Mid-term Project
 
 ## Project Learning Outcomes
-* experience with collaboration
-* learn how to work with others
-* reinforce the foundation of skills
-* working on a project from start-to-finish
+* Experience with collaboration
+* Utilise git workflow for the first time
+* Reinforce the foundation of Bootcamp Week 1 - Week 4 skills
+* Working on a project from start-to-finish
+___
 
-### This File...
+## In This File...
 
 Here is where you'll find our thought process, our plans, and step-by-step execution of this app as it happens. Follow along as we test what we've learned!
 
-### User Stories
+## User Stories
 
 - As a user, I want to be able to submit text, because I want to add things to my list!
 - As a user, I want to save my lists to a login, because I don't want to rewrite everything.
@@ -27,13 +28,13 @@ STRETCH FUNCTIONS - What we hope to achieve!
 - As a user, I want to get reminders about my lists, because I don't want to forget I them - they're on a list for a reason!
 - As a user, I want to set my own reminder time-limits for lists/items, because I only eat out on weekends but I watch movies every night!
 
-### User Scenarios
+## User Scenarios
 
 - Given an error for multiple returns on an item, when the list is selected, then the item is sorted to that list.
 - Given that I'm not logged in, when I click the login button, then I should see my active lists and the "add new item" box.
 - Given that I'm logged in, when I click a list title, then the list expands to show the contents.
 
-### Routes
+## Routes
 
 RESTful conventions used!
 

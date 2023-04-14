@@ -1,23 +1,6 @@
-const fetch = require('node-fetch');
+const axios = require('axios');
 const { google } = require('googleapis');
 const aws = require('aws-lib');
-// need to install
-// npm install google-auth-library googleapis
-// npm install aws-lib
-
-/*
-  break 3 differents function
-  do not use async!!
-  use promise.then
-
-  After break down 3 different function
-  this export to category-decision.js
-  in category-decision we can make sure the category then export the categoryDecision to get_todo.js
-  in get_todo.js GET the word, user typed.
-  then call categoryDecision
-
-*/
-
 
 // API KEYs
 
@@ -49,7 +32,10 @@ const fetchAmazon = function(word) {
 
 // Yelp API
 const fetchYelp = function(word) {
-  const yelpPromise = fetch(`https://api.yelp.com/v3/businesses/search?term=${word}&location=Vancouver&categories=restaurants`, { headers: { Authorization: `Bearer ${YELP_API_KEY}` } })
+  const yelpPromise = axios({
+    method: 'get',
+    url: `https://api.yelp.com/v3/businesses/search?term=${word}&location=Vancouver&categories=restaurants`,
+    headers: { Authorization: `Bearer ${YELP_API_KEY}` } })
     .then(res => res.json())
     .then(json => {
       if (json.businesses.length > 0) {
@@ -112,9 +98,3 @@ async function classifyWord(word) {
 
 
 module.exports = { classifyWord };
-
-
-/*
-    index.html(or index.ejs) - index.js : should be use same name
-  api_call_save.js
-*/

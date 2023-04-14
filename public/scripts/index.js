@@ -11,16 +11,15 @@ $(document).ready(function() {
   //form to create a new task item
   const createTaskElement = function(task) {
     const $task = $(`
-      <article class="task ${task.category_id}" id="${task.id}>
+      <div class="task ${task.category_id}" id="${task.id}>
         <div class="input">
           <p for="task">${escape(task.title)}</p>
           <div class="task-buttons">
-        	  <button class='completion' value=${task.completed} type='submit'><i class="far fa-check-square"></i></button>
-        	  <button class='delete' type='submit'><i class="fas fa-trash-alt"></i></button>
+      	    <button class='remove' value=${task.delete} type='submit'><i class="fa-regular fa-minus"></i></button>
         	  <button class='edit-task' type='submit'><i class="fas fa-pencil-alt"></i></button>
       	  </div>
         </div>
-      </article>
+      </div
     `);
     return $task;
   };
@@ -44,9 +43,30 @@ $(document).ready(function() {
     }
   };
 
+  //remove a task from list
+  const removeTask = function() {
+    $(document).on("click", ".remove", function() {
+      const taskLocation = $(this).closest(".task").attr("id");
+      $.ajax({
+        type: 'DELETE',
+        url: `/todo/${taskLocation}`,
+      })
+        .done(() => {
+          console.log("Task removed")
+          $(this).closest(".task").remove();
+        })
+    });
+  };
+
+  const emptyTaskLists = function() {
+    $(".eat.todo-list").empty();
+    $(".watch.todo-list").empty();
+    $(".buy.todo-list").empty();
+    $(".read.todo-list").empty();
+  };
+
   const renderToDo = function(tasks) {
-    const $container = $("#todo-list");
-    $container.empty();
+    emptyTaskLists();
 
     tasks.forEach(task => {
       const newTask = createTaskElement(task);
@@ -66,6 +86,7 @@ $(document).ready(function() {
   //Submit a new task to list from submit form!
   $("#add-todo").on("click", function(event) {
     event.preventDefault();
+    //newTask to be used for error handling
     const newTask = $(this).serialize();
     const input = $("#task").val();
 
@@ -77,6 +98,7 @@ $(document).ready(function() {
       loadToDo();
     });
   });
-
   loadToDo();
+  removeTask();
 });
+
