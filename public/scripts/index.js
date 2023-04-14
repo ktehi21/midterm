@@ -11,14 +11,17 @@ $(document).ready(function() {
   //form to create a new task item
   const createTaskElement = function(task) {
     const $task = $(`
-    <article class="task ${task.category_id}" id="${task.id}>
-      <p><label>
-          <input type="checkbox">
-          <span class="checkable"> ${escape(task.title)}
-        </label>
-      </p>
+      <article class="task ${task.category_id}" id="${task.id}>
+        <div>
+          <p for="task">${escape(task.title)}</p>
+          <div class="task-buttons">
+        	  <button class='completion' value=${task.completed} type='submit'><i class="far fa-check-square"></i></button>
+        	  <button class='delete' type='submit'><i class="fas fa-trash-alt"></i></button>
+        	  <button class='edit-task' type='submit'><i class="fas fa-pencil-alt"></i></button>
+      	  </div>
+        </div>
       </article>
-  `);
+    `);
     return $task;
   };
 
@@ -56,14 +59,12 @@ $(document).ready(function() {
       url: '/todo',
       method: 'GET'
     }).then((response) => {
-      console.log("response data, index file", response);
       renderToDo(response || []);
     });
   };
 
   //Submit a new task to list from submit form!
   $("#add-todo").on("click", function(event) {
-    console.log("Random");
     event.preventDefault();
     const newTask = $(this).serialize();
     const input = $("#task").val();
@@ -73,7 +74,6 @@ $(document).ready(function() {
       url: '/todo',
       data: { task: input }
     }).then((val) => {
-      console.log("Random val success", val); // this is the object response from category decision
       loadToDo();
     });
   });

@@ -1,15 +1,9 @@
-@font-face {
-  font-family: 'Andale Mono Regular';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Andale Mono Regular'), url('../public/styles/ANDALEMO.woff') format('woff');
-  }
-
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family:'Andale Mono Regular';
+  font-family:'Lucinda Console', Courier, monospace;
+  font-weight: 500;
   background-color: #f4f4f4;
 }
 p {
