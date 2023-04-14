@@ -117,9 +117,6 @@ main {
     background-color: #f2f4f1;
     font-size: 16px;
     padding: 0 30px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
 
 
     > div:first-child{

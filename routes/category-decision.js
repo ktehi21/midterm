@@ -1,5 +1,6 @@
 // This will be replaced by each API we are actually going to use:
-const {classifyWord} = require('./api_call');
+const { classifyWord } = require('./api_call');
+const { getTodo, saveTodoList } = require('../db/queries/todo_data');
 
 
 //Functions that will look for key words in a query to categorize a task:
@@ -19,7 +20,7 @@ const simpleTaskCheck = (taskString) => {
     lowerCaseTask.includes("restaurant") ||
     lowerCaseTask.includes("cafe")
   ) {
-    category = "eat"
+    category = "EAT"
   }
 
   if (
@@ -28,7 +29,7 @@ const simpleTaskCheck = (taskString) => {
     lowerCaseTask.includes("film") ||
     lowerCaseTask.includes("tv")
   ) {
-    category = "watch";
+    category = "WATCH";
   }
 
   if (
@@ -38,7 +39,7 @@ const simpleTaskCheck = (taskString) => {
     lowerCaseTask.includes("novel") ||
     lowerCaseTask.includes("textbook")
   ) {
-    category = "read";
+    category = "READ";
   }
 
   if (
@@ -48,7 +49,7 @@ const simpleTaskCheck = (taskString) => {
     lowerCaseTask.includes("grocer") ||
     lowerCaseTask.includes("purchase")
   ) {
-    category = "buy";
+    category = "BUY";
   }
   return category;
 }
@@ -63,15 +64,16 @@ const categoryDecision = (taskString) => {
   category = simpleTaskCheck(taskString);
 
   if (category) {
-    return category;
+    return saveTodoList({ user_id: 1, category: category, title: taskString, post_date: new Date(), complete: false });
   }
 
   //Time to start querying the API's
 
   return classifyWord(taskString)
-  .then(data => {
-    console.log(data);
-  })
+    .then(data => {
+      return saveTodoList({ user_id: 1, category: data, title: taskString, post_date: new Date(), complete: false });
+    })
 };
+
 
 module.exports = { categoryDecision };
