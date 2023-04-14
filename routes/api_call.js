@@ -1,9 +1,12 @@
 const fetch = require('node-fetch');
 const { google } = require('googleapis');
-const aws = require('aws-lib');
+const amazon = require('amazon-product-api');
+// const yelp = require('yelp-fusion');
+const config = require('./config.json');
+
 // need to install
 // npm install google-auth-library googleapis
-// npm install aws-lib
+// npm install amazon-product-api
 
 /*
   break 3 differents function
@@ -20,69 +23,84 @@ const aws = require('aws-lib');
 
 
 // API KEYs
-const YELP_API_KEY = 'Hxk7-QeEfr9MHXjXgbCGBoaM6QK5-iUmIv9zRkoJ8OzAkNZWr-Vh4_WnXToqxZ_daB13EGRmF0dcHmOM0_nOJAS1vGQo1LWk3RdbEIk3GVtMwr-u0R-xDBff5P41ZHYx';
-const prodAdv = aws.createProdAdvClient(
-  'pt8NKSaKf81QT1MuinYJXaYVYfefc5Ec6K29i2s0',
-  'YtnqCajegNPoqn+ZYdm9lVfcPw3WFlHNuUlxjvV5'
-);
-const GOOGLE_BOOKS_API_KEY = 'AIzaSyDWY0aEPcjQwIsE4G3eR0-Qvar09I4UaGc';
+const YELP_API_KEY = "kRn5kpS7aUV-q3h-vjMBHRtQaw4Jx5b6g2l8xKTXwHs7uszFl9TjjSgFeuY7PLB5d2z4sS4lAF0qRRBqcwvV_e91W01j94-fPGsOu4dw1R7aKntAiU_2mRX6wcs4ZHYx";
+const prodAdv = amazon.createClient({
+  awsId: config.aws.accessKeyId,
+  awsSecret: config.aws.secretAccessKey,
+  awsTag: config.aws.associateTag
+});
+const GOOGLE_BOOKS_API_KEY = "AIzaSyB6lIxhXjytgBOQUJ7yM-6Zg9ZX1aW5dsU";
 const books = google.books('v1');
 
 // Amazon API
-const fetchAmazon = function (word) {
-  const amazonPromise = new Promise((resolve, reject) => {
-    prodAdv.call('ItemSearch', {
-      SearchIndex: 'All',
-      Keywords: word,
-      ResponseGroup: 'ItemAttributes,Offers'
-    }, (err, result) => {
-      if (err) {
-        reject(err);
-        return
-      }
-      console.log(result); // log the result to the console
-      if (result.Items && result.Items.Item && result.Items.Item.length > 0) {
-        resolve('BUY');
-        return
-      }
-      resolve();
-    });
-  });
+// const fetchAmazon = function (word) {
+//   const amazonPromise = new Promise((resolve, reject) => {
+//     prodAdv.itemSearch({
+//       SearchIndex: 'All',
+//       Keywords: word,
+//       ResponseGroup: 'ItemAttributes,Offers'
+//     }, (err, result) => {
+//       if (err) {
+//         reject(err);
+//         return
+//       }
+//       if (result && result.Items && result.Items.Item && result.Items.Item.length > 0) {
+//         resolve('BUY');
+//         return
+//       }
+//       resolve();
+//     });
+//   });
 
-  return amazonPromise
-}
+//   return amazonPromise;
+// }
 
-// Yelp API
+// // Yelp API - EAT
 const fetchYelp = function (word) {
-  const yelpPromise = fetch(`https://api.yelp.com/v3/businesses/search?term=${word}&location=Vancouver&categories=restaurants`, { headers: { Authorization: `Bearer ${YELP_API_KEY}` } })
+  const yelpPromise = fetch(`https://api.yelp.com/v3/businesses/search?location=Vancouver&term=${word}&categories=restaurants`, { headers: { Authorization: `Bearer ${YELP_API_KEY}` } })
     .then(res => res.json())
     .then(json => {
-      if (json.businesses.length > 0) {
+      // Check if any of the returned businesses have a name that matches the search term
+      const matchingBusiness = json.businesses.find(business => business.name.toLowerCase().includes(word.toLowerCase()));
+      if (matchingBusiness) {
+        // console.log("business: ", matchingBusiness);
         return 'EAT';
       }
-      // Return a resolved promise with null if no businesses are found
+      // Return a resolved promise with null if no matching businesses are found
       return null;
     });
-
   return yelpPromise
 }
 
-// Google Books API
+// OMDb API - WATCH
+const fetchMovie = function (word) {
+  const moviePromise = fetch(`http://www.omdbapi.com/?t=${word}&apikey=69364abe`)
+      .then(res => res.json())
+      .then(json => {
+        if (json.Title.length > 0) {
+          return 'WATCH';
+        }
+        // Return a resolved promise with null if no movie is found
+        return null;
+      });
+
+    return moviePromise
+}
+
+// // Google Books API - READ
 const fetchBooks = function (word) {
-  const booksPromise = books.volumes.list({
-    q: `intitle:${word}`,
-    key: GOOGLE_BOOKS_API_KEY
-  })
-    .then(res => {
-      const { data } = res;
-      if (data.items && data.items.length > 0) {
+  const booksPromise = fetch(`https://www.googleapis.com/books/v1/volumes?q=intitle:${word}`)
+    .then(res => res.json())
+    .then(json => {
+      if (json.items && json.items.length > 0) {
         return 'READ';
       }
+      // Return a resolved promise with null if no books are found
       return null;
     });
 
-  return booksPromise
-}
+  return booksPromise;
+};
 
 
 // code start
@@ -93,33 +111,39 @@ async function classifyWord(word) {
 
   let category = '';
 
-  return Promise.all([fetchAmazon(word), fetchYelp(word), fetchBooks(word)])
-    .then(all => {
-      const amazonResult = all[0];
-      const yelpResult = all[1];
-      const booksResult = all[2];
-      if (amazonResult) {
-        return amazonResult;
-      }
-      if (booksResult) {
-        return booksResult;
-      }
-      if (yelpResult) {
-        return yelpResult;
-      }
-    })
-    .catch(err => {
-      console.log(err.messege);
-    })
+  try {
+    const [yelpResult, movieResult, booksResult] = await Promise.all([
+      fetchYelp(word),
+      fetchMovie(word),
+      fetchBooks(word)
+    ]);
+console.log("뭘까",yelpResult, movieResult, booksResult);
+    if (yelpResult) {
+      // console.log("음식: ", yelpResult);
+      return yelpResult;
+    }
+    if (movieResult) {
+      // console.log("영화: ", movieResult);
+      return movieResult;
+    }
+    if (booksResult) {
+      // console.log("책: ", booksResult);
+      return booksResult;
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
 
-  return null;
+  // If none of the results are defined or truthy, return 'BUY'
+  return 'BUY';
 }
 
 
+
+
+// classifyWord('parasite')
+//   .then(result => {
+//     console.log("결과: ", result);
+//   });
+
 module.exports = { classifyWord };
-
-
-/*
-    index.html(or index.ejs) - index.js : should be use same name
-  api_call_save.js
-*/

@@ -11,6 +11,7 @@ $(document).ready(function () {
 
 
   //form to create a new task item
+  ////////// key names (title, category, post_time)
   const createTaskElement = function(task) {
     const $task = $(`
       <article class="task ${task.category}" id="${task.title}>
@@ -24,27 +25,30 @@ $(document).ready(function () {
     return $task;
   };
 
+  /////// now we need 2 arguments task, taskObj
   const sendToList = function(task, taskObj) {
     console.log("taskObj", taskObj);
     console.log("task", task);
-    if (taskObj.category === 'eat') {
+    if (taskObj.category === 'EAT') {
       $(".eat .todo-list").append(task);
       return;
     }
-    if (taskObj.category === 'watch') {
+    if (taskObj.category === 'WATCH') {
       $(".watch .todo-list").append(task);
       return;
     }
-    if (taskObj.category === 'buy') {
+    if (taskObj.category === 'BUY') {
       $(".buy .todo-list").append(task);
       return;
     }
-    if (taskObj.category === 'read') {
+    if (taskObj.category === 'READ') {
       $(".read .todo-list").append(task);
       return;
     }
   };
 
+  //////// sendToList has 2 arguments
+  //////// please choose right element for the $container
   const renderToDo = function(tasks) {
     const $container = $(".todo-list");
     $container.empty();
@@ -55,18 +59,22 @@ $(document).ready(function () {
   };
 
   //Submit a new task to list from submit form!
+  ///////// now submit button doesn't have type, please use id and 'click'
   $("#submit").on("click", function(event) {
     event.preventDefault();
     const newTask = $(this).serialize();
     const input = $("#task").val();
-
+    console.log("CLICKED!");
+    /////// url, data changed
+    /////// change the then contain function (val), and renderToDo(val.data)
     $.post({
       method: 'POST',
       url: '/todo',
       data: {task:input}
     }).then((val)=>{
-      console.log(val); // this is the object response from category decision
-      // loadToDo();
+      // this is the object response from category decision
+      console.log(val);
+      loadToDo();
       renderToDo(val.data);
     });
 

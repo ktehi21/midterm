@@ -44,12 +44,13 @@
   <div class="wrapper"><!-- WRAPPER DIV HIDES CONTENTS ON WHEN NOT LOGIN  -->
     <!-- NEW TODO SUBMISSION BOX, TO BE HIDDEN FOR NON USER -->
     <header>
-      <form id="new-task-form"> <!-- delete method, action-->
+      <form id="new-task-form" method="POST" action="/todo"> <!-- delete method, action-->
         <p>Add whatever you want to do. We will help you to categorize it</p>
         <textarea name="text" id="task" for="task" placeholder="..."></textarea>
+
       </form>
       <div class="add-button">
-        <button type="submit">ADD TODO</button>
+        <button id="submit">ADD TODO</button><!-- no attr type, use id-->
       </div>
     </header>
 
@@ -79,7 +80,6 @@
           <p> Hi There!</p>
         </div>
       </section>
-    </section>
   </main>
   </div> <!-- END OF WRAPPER DIV -->
   <footer>
