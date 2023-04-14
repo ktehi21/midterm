@@ -1,11 +1,11 @@
 // Client facing scripts:
 
-$(document).ready(function() {
+$(document).ready(function () {
 
   //collapsible container for each category's list
   const coll = document.getElementsByClassName("collapsible");
   for (i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function() {
+    coll[i].addEventListener("click", function () {
       this.classList.toggle("active");
       const content = this.nextElementSibling;
       if (content.style.display === "block") {
