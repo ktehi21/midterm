@@ -12,7 +12,7 @@ $(document).ready(function() {
   const createTaskElement = function(task) {
     const $task = $(`
       <article class="task ${task.category_id}" id="${task.id}>
-        <div>
+        <div class="input">
           <p for="task">${escape(task.title)}</p>
           <div class="task-buttons">
         	  <button class='completion' value=${task.completed} type='submit'><i class="far fa-check-square"></i></button>

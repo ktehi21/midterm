@@ -3,7 +3,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   color: #353a3d;
   padding-bottom: 20%;
@@ -26,14 +26,10 @@
   img {
     width: 80%;
   }
-
-  .intro-message p {
-    font-size: 14px;
-  }
-}
+};
 
 
 
-// .wrapper {
-//   display: none;
-// }
+.wrapper {
+  display: none;
+};

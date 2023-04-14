@@ -1,6 +1,7 @@
 body {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   min-height: 100vh;
   font-family:'Lucinda Console', Courier, monospace;
   font-weight: 500;
@@ -25,6 +26,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 
     p{
       margin-top: 75px;
@@ -70,7 +72,7 @@ main {
   margin: 75px auto;
   padding: 0 20px 130px;
 
-  section{
+  section {
     margin-bottom: 35px;
     box-shadow: 5px 5px 6px #bcbaba;
   }
@@ -85,7 +87,7 @@ main {
     width: 100%;
     border: none;
 
-    div{
+    div {
       display: flex;
       align-items: center;
 
@@ -110,52 +112,25 @@ main {
     color: #454444;
     background-color: #f2f4f1;
     font-size: 16px;
-    padding: 0 30px;
+    padding: 20px;
 
-
-    > div:first-child{
-      margin-top: 30px;
-    }
-    >div:last-child{
-      margin-bottom: 30px;
-    }
-
-    .lists {
+    .task {
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 2px solid #798c89;
       margin-bottom: 10px;
-      padding: 0 15px;
+      padding: 5px;
 
-      div{
+      .input {
         display: flex;
         align-items: center;
-
-        input {
-          width: 26px; height: 26px;
-          border-radius: 3px;
-          border: 2px solid #798c89;
-          margin-right: 15px;
-        }
-        p{
-          display: flex;
-          flex-direction: column;
-          padding-bottom: 5px;
-          padding-left: 15px;
-          border-left: 2px solid #798c89;
-
-        }
-        span{
-          color: #989393;
-          font-size: 14px;
         }
       }
     }
-  }
 };
 
-footer{
+footer {
   height: 50px;
   color: #fff;
   text-align: center;
