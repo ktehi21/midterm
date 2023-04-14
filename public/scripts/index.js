@@ -15,7 +15,7 @@ $(document).ready(function() {
         <div class="input">
           <p for="task">${escape(task.title)}</p>
           <div class="task-buttons">
-        	  <button class='completion' value=${task.completed} type='submit'><i class="far fa-check-square"></i></button>
+        	  <button class='completion' value=${task.complete} type='submit'><i class="far fa-check-square"></i></button>
         	  <button class='delete' type='submit'><i class="fas fa-trash-alt"></i></button>
         	  <button class='edit-task' type='submit'><i class="fas fa-pencil-alt"></i></button>
       	  </div>
@@ -66,6 +66,7 @@ $(document).ready(function() {
   //Submit a new task to list from submit form!
   $("#add-todo").on("click", function(event) {
     event.preventDefault();
+    //newTask to be used for error handling
     const newTask = $(this).serialize();
     const input = $("#task").val();
 
