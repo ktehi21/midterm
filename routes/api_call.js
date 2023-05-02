@@ -20,13 +20,6 @@ const aws = require('aws-lib');
 
 
 // API KEYs
-const YELP_API_KEY = 'Hxk7-QeEfr9MHXjXgbCGBoaM6QK5-iUmIv9zRkoJ8OzAkNZWr-Vh4_WnXToqxZ_daB13EGRmF0dcHmOM0_nOJAS1vGQo1LWk3RdbEIk3GVtMwr-u0R-xDBff5P41ZHYx';
-const prodAdv = aws.createProdAdvClient(
-  'pt8NKSaKf81QT1MuinYJXaYVYfefc5Ec6K29i2s0',
-  'YtnqCajegNPoqn+ZYdm9lVfcPw3WFlHNuUlxjvV5'
-);
-const GOOGLE_BOOKS_API_KEY = 'AIzaSyDWY0aEPcjQwIsE4G3eR0-Qvar09I4UaGc';
-const books = google.books('v1');
 
 
 
